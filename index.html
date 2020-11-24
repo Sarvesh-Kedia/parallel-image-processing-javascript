@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Capstone Project</title>
+</head>
+<body>
+<h1>Parallel Image Processing</h1>
+<input type="file" accept="image/*" id="fileinput" />
+<div>
+    <br/>
+    <canvas id="canvas" width="0" height="0"></canvas>
+    
+    <br><br>
+
+    <button onclick="showOriginal()">Show Original</button>
+    
+    <br>
+
+    <div id="tranformation">
+        <h2>Affine Transformations Serial</h2>
+        <button onclick="serialReflect()">Serial Reflect</button>
+        <button onclick="serialScale()">Serial Reflect</button>
+        <button onclick="serialRotate()">Serial Reflect</button>
+
+    </div>
+
+    
+    <div id="tranformation">
+        <h2>Image Filtering Serial</h2>
+        <button onclick="serialGrayScale()">Serial Gray Scale</button>
+        <button onclick="serialInvert()">Serial Invert</button>
+
+    </div>
+
+    <div id="tranformation">
+        <h2>Image Filtering Parallel</h2>
+        <button onclick="parallelGrayScale()">Prallel Gray Scale</button>
+        <button onclick="parallelInvert()">Parallel Invert</button>
+
+    </div>
+
+    <br><br>
+
+   
+</div>
+<script src="main.js"></script>
+</body>
+</html>
