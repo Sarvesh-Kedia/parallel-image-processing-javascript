@@ -20,12 +20,17 @@
     <div id="tranformation">
         <h2>Affine Transformations Serial</h2>
         <button onclick="serialReflect()">Serial Reflect</button>
-        <button onclick="serialScale()">Serial Reflect</button>
-        <button onclick="serialRotate()">Serial Reflect</button>
+        <button onclick="serialRotate()">Serial Rotate</button>
 
     </div>
 
-    
+    <div id="tranformation">
+        <h2>Affine Transformations Parallel</h2>
+        <button onclick="parallelReflect()">Parallel Reflect</button>
+        <button onclick="parallelRotate()">Parallel Rotate</button>
+
+    </div>
+
     <div id="tranformation">
         <h2>Image Filtering Serial</h2>
         <button onclick="serialGrayScale()">Serial Gray Scale</button>
@@ -37,6 +42,13 @@
         <h2>Image Filtering Parallel</h2>
         <button onclick="parallelGrayScale()">Prallel Gray Scale</button>
         <button onclick="parallelInvert()">Parallel Invert</button>
+
+    </div>
+
+    <div id="tranformation">
+        <h2>Image Convolution Serial</h2>
+        <button onclick="serialImageConvolution([[1, 1, 1], [1, 1, 1], [1, 1, 1]])">Serial GaussianBlur</button>
+        <button onclick="serialImageConvolution([[0, -1, 0], [-1, 5, -1], [0, -1, 0]])">Serial Sharpen</button>
 
     </div>
 
