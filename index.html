@@ -14,41 +14,52 @@
     <br><br>
 
     <button onclick="showOriginal()">Show Original</button>
+    <button onclick="test()">Run Test</button>
     
     <br>
 
+
     <div id="tranformation">
-        <h2>Affine Transformations Serial</h2>
+        <h2>Affine Transformation (Reflect)</h2>
         <button onclick="serialReflect()">Serial Reflect</button>
-        <button onclick="serialRotate()">Serial Rotate</button>
+        <button onclick="parallelReflect()">Parallel Reflect</button>
 
     </div>
 
     <div id="tranformation">
-        <h2>Affine Transformations Parallel</h2>
-        <button onclick="parallelReflect()">Parallel Reflect</button>
+        <h2>Affine Transformation (Rotate)</h2>
+        <button onclick="serialRotate()">Serial Rotate</button>
         <button onclick="parallelRotate()">Parallel Rotate</button>
 
     </div>
 
     <div id="tranformation">
-        <h2>Image Filtering Serial</h2>
+        <h2>Image Filtering (GrayScale)</h2>
         <button onclick="serialGrayScale()">Serial Gray Scale</button>
-        <button onclick="serialInvert()">Serial Invert</button>
+        <button onclick="parallelGrayScale()">Parallel Gray Scale</button>
 
     </div>
 
     <div id="tranformation">
-        <h2>Image Filtering Parallel</h2>
-        <button onclick="parallelGrayScale()">Prallel Gray Scale</button>
+        <h2>Image Filtering (Invert)</h2>
+        <button onclick="serialInvert()">Serial Invert</button>
         <button onclick="parallelInvert()">Parallel Invert</button>
 
     </div>
 
     <div id="tranformation">
-        <h2>Image Convolution Serial</h2>
+        <h2>Image Convolution (Blur)</h2>
         <button onclick="serialImageConvolution([[1, 1, 1], [1, 1, 1], [1, 1, 1]])">Serial GaussianBlur</button>
+        <button onclick="parallelImageConvolution([[1, 1, 1], [1, 1, 1], [1, 1, 1]])">Parallel GaussianBlur</button>
+
+    </div>
+
+    <div id="tranformation">
+        <h2>Image Convolution (Blur)</h2>
         <button onclick="serialImageConvolution([[0, -1, 0], [-1, 5, -1], [0, -1, 0]])">Serial Sharpen</button>
+        <button onclick="serialImageConvolution([[0, -1, 0], [-1, 5, -1], [0, -1, 0]])">Parallel Sharpen</button>
+
+
 
     </div>
 
@@ -57,5 +68,8 @@
    
 </div>
 <script src="main.js"></script>
+<script src="serial.js"></script>
+<script src="parallel.js"></script>
+
 </body>
 </html>
