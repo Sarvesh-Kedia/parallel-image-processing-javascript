@@ -10,7 +10,7 @@ const ctx = canvas.getContext('2d')
 
 
 const srcImage = new Image()
-srcImage.src = "./small.jpg"
+srcImage.src = "./Photo2.jpg"
 
 
 
@@ -74,12 +74,26 @@ function commitChanges(finalImgData, newImagePixelMatrix, width, height) {
 	ctx.putImageData(finalImgData, 0, 0, 0, 0, width, height)
 }
 
-function test(){
+function test(workerNum){
 
 
 	console.log("serial reflect time: ", serialReflect())
 
-	parallelReflect(5)
+	parallelReflect(workerNum)
+
+	console.log("serial grayscale time: ", serialGrayScale())
+
+	parallelGrayScale(workerNum)
+
+	console.log("serial invert time: ", serialInvert())
+
+	parallelInvert(workerNum)
+
+	console.log("serial convolution time: ", serialImageConvolution([[1, 1, 1], [1, 1, 1], [1, 1, 1]]))
+
+	parallelImageConvolution([[1, 1, 1], [1, 1, 1], [1, 1, 1]], workerNum)
+
+
 
 
 }

@@ -74,10 +74,12 @@ serialGrayScale = function(){
 	imagePixelMatrix = imgData.data.slice()
 
 
-	console.log('imagePixelMatrix', imagePixelMatrix)
+	// console.log('imagePixelMatrix', imagePixelMatrix)
 
 	var height = srcImage.height
 	var width = srcImage.width
+
+	t0 = performance.now()
 
 	// For every pixel of the src image
 	for (let i = 0; i < height; i++) {
@@ -103,9 +105,14 @@ serialGrayScale = function(){
 		}
 	}
 
-	console.log('updated imagePixelMatrix', imagePixelMatrix)
+	// console.log('updated imagePixelMatrix', imagePixelMatrix)
+
+	t1 = performance.now()
 
 	commitChanges(imgData, imagePixelMatrix, width, height)
+
+	return t1-t0
+
 }
 
 
@@ -119,13 +126,15 @@ serialInvert = function(){
 	imagePixelMatrix = imgData.data.slice()
 
 
-	console.log('imagePixelMatrix', imagePixelMatrix)
+	// console.log('imagePixelMatrix', imagePixelMatrix)
 
 	var height = srcImage.height
 	var width = srcImage.width
 
 	// For every pixel of the src image
-	console.log(srcImage.height, srcImage.width)
+	// console.log(srcImage.height, srcImage.width)
+
+	t0 = performance.now()
 
 	for (let i = 0; i < height; i++) {
 		for (let j = 0; j < width; j++) {
@@ -149,9 +158,13 @@ serialInvert = function(){
 		
 	}
 
-	console.log('updated imagePixelMatrix', imagePixelMatrix)
+	// console.log('updated imagePixelMatrix', imagePixelMatrix)
+
+	t1 = performance.now()
 
 	commitChanges(imgData, imagePixelMatrix, width, height)
+
+	return t1-t0
 }
 
 
@@ -166,17 +179,17 @@ serialImageConvolution = function(kern){
 
 	let kernel = kern
 
-
-
 	ksum = arrSum(kernel)
 
-	console.log(ksum)
+	// console.log(ksum)
 
-	console.log('imagePixelMatrix', imagePixelMatrix)
+	// console.log('imagePixelMatrix', imagePixelMatrix)
 
 	var height = srcImage.height
 	var width = srcImage.width
 
+
+	t0 = performance.now()
 
 
 	// For every pixel of the src image
@@ -261,7 +274,11 @@ serialImageConvolution = function(kern){
 		}
 	}
 
-	console.log('updated imagePixelMatrix', imagePixelMatrix)
+	// console.log('updated imagePixelMatrix', imagePixelMatrix)
+
+	t1 = performance.now()
 
 	commitChanges(imgData, imagePixelMatrix, width, height)
+
+	return t1-t0
 }
