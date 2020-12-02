@@ -39,7 +39,7 @@ onmessage = function(e) {
         for (let j = 0; j < width/2; j++) {
 
             var index = getIndex(j, i, width)
-            var index2 = getIndex(width-j, i, width)
+            var index2 = getIndex(width-j-1, i, width)
 
             const redIndex =  index + R_OFFSET
             const greenIndex = index + G_OFFSET
@@ -52,6 +52,8 @@ onmessage = function(e) {
 
             // swap the pixels in indiex1 and index2 for each colour
 
+            // console.log(redIndex, redIndex2, computeMatrix[redIndex], computeMatrix[redIndex2])
+
             var tempr = computeMatrix[redIndex]
             var tempg = computeMatrix[greenIndex]
             var tempb = computeMatrix[blueIndex]
@@ -63,6 +65,9 @@ onmessage = function(e) {
             computeMatrix[redIndex2] = tempr
             computeMatrix[greenIndex2] = tempg
             computeMatrix[blueIndex2] = tempb
+
+            // console.log(redIndex, redIndex2, computeMatrix[redIndex], computeMatrix[redIndex2])
+
 
         }
     }

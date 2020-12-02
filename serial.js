@@ -20,8 +20,9 @@ serialReflect = function(){
 		for (let j = 0; j < width/2; j++) {
 
 			var index = getIndex(j, i)
-			var index2 = getIndex(width-j, i)
+			var index2 = getIndex(width-j-1, i)
 
+			// console.log(index, index2)
 
 
 			const redIndex =  index + R_OFFSET
@@ -38,6 +39,8 @@ serialReflect = function(){
 			var tempr = imagePixelMatrix[redIndex]
 			var tempg = imagePixelMatrix[greenIndex]
 			var tempb = imagePixelMatrix[blueIndex]
+
+			// console.log(tempr, tempg, tempb)
 
 			imagePixelMatrix[redIndex] = imagePixelMatrix[redIndex2]
 			imagePixelMatrix[greenIndex] = imagePixelMatrix[greenIndex2]
@@ -60,6 +63,8 @@ serialReflect = function(){
 
 }
 
+
+// roate isnt proper. fix this
 serialRotate = function(){
 	
 	// Get an ImageData object representing the underlying pixel data for the area of the canvas
@@ -103,6 +108,7 @@ serialRotate = function(){
 
 	commitChanges(imgData, imagePixelMatrix, height, width)
 }
+
 
 serialGrayScale = function(){
 	
