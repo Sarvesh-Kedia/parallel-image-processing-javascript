@@ -34,43 +34,31 @@ onmessage = function(e) {
     var i = e.data.i
 
     
-    // For every pixel of the src image
-    for (let i = 0; i < height; i++) {
-        for (let j = 0; j < width/2; j++) {
+	// For every pixel of the src image
+	for (let i = 0; i < height; i++) {
+		for (let j = 0; j < width; j++) {
 
-            var index = getIndex(j, i, width)
-            var index2 = getIndex(width-j-1, i, width)
+			
+			var index = getIndex(j, i, width)
+		
+			const redIndex =  index + R_OFFSET
+			const greenIndex = index + G_OFFSET
+			const blueIndex = index + B_OFFSET
+			
+			const redValue = computeMatrix[redIndex]
+			const greenValue = computeMatrix[greenIndex]
+			const blueValue = computeMatrix[blueIndex]
 
-            const redIndex =  index + R_OFFSET
-            const greenIndex = index + G_OFFSET
-            const blueIndex = index + B_OFFSET
+			const mean = (redValue + greenValue + blueValue) / 3
 
-            const redIndex2 =  index2 + R_OFFSET
-            const greenIndex2 = index2 + G_OFFSET
-            const blueIndex2 = index2 + B_OFFSET
+			computeMatrix[redIndex] = clamp(mean)
+			computeMatrix[greenIndex] = clamp(mean)
+			computeMatrix[blueIndex] = clamp(mean)
 
-
-            // swap the pixels in indiex1 and index2 for each colour
-
-            // console.log(redIndex, redIndex2, computeMatrix[redIndex], computeMatrix[redIndex2])
-
-            var tempr = computeMatrix[redIndex]
-            var tempg = computeMatrix[greenIndex]
-            var tempb = computeMatrix[blueIndex]
-
-            computeMatrix[redIndex] = computeMatrix[redIndex2]
-            computeMatrix[greenIndex] = computeMatrix[greenIndex2]
-            computeMatrix[blueIndex] = computeMatrix[blueIndex2]
-
-            computeMatrix[redIndex2] = tempr
-            computeMatrix[greenIndex2] = tempg
-            computeMatrix[blueIndex2] = tempb
-
-            // console.log(redIndex, redIndex2, computeMatrix[redIndex], computeMatrix[redIndex2])
+		}
+	}
 
 
-        }
-    }
 	postMessage({computeMatrix, height, i});
 }
 

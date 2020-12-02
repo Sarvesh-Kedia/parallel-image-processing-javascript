@@ -64,52 +64,6 @@ serialReflect = function(){
 }
 
 
-// roate isnt proper. fix this
-serialRotate = function(){
-	
-	// Get an ImageData object representing the underlying pixel data for the area of the canvas
-	imgData = ctx.getImageData(0, 0, srcImage.width, srcImage.height)
-
-
-	// .data gets the array of integers with 0-255 range, .slice returns a copy of the array 
-	imagePixelMatrix = imgData.data.slice()
-	tempMatrix = imgData.data.slice()
-
-	console.log('imagePixelMatrix', imagePixelMatrix)
-
-	var height = srcImage.height
-	var width = srcImage.width
-
-	// For every pixel of the src image
-	for (let i = 0; i < height; i++) {
-		for (let j = 0; j < width; j++) {
-
-			var index1 = getIndex(j, i)
-			var index2 = getIndex(i, j)
-
-
-			const redIndex1 =  index1 + R_OFFSET
-			const greenIndex1 = index1 + G_OFFSET
-			const blueIndex1 = index1 + B_OFFSET
-
-			const redIndex2 =  index2 + R_OFFSET
-			const greenIndex2 = index2 + G_OFFSET
-			const blueIndex2 = index2 + B_OFFSET
-
-
-			imagePixelMatrix[redIndex1] = tempMatrix[redIndex2]
-			imagePixelMatrix[greenIndex1] = tempMatrix[greenIndex2]
-			imagePixelMatrix[blueIndex1] = tempMatrix[blueIndex2]
-
-		}
-	}
-
-	console.log('updated imagePixelMatrix', imagePixelMatrix)
-
-	commitChanges(imgData, imagePixelMatrix, height, width)
-}
-
-
 serialGrayScale = function(){
 	
 	// Get an ImageData object representing the underlying pixel data for the area of the canvas
