@@ -10,7 +10,7 @@ const ctx = canvas.getContext('2d')
 
 
 const srcImage = new Image()
-srcImage.src = "./Photo2.jpg"
+srcImage.src = "./Photos/Photo2.jpg"
 
 
 
