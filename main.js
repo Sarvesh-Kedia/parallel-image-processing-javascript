@@ -79,19 +79,19 @@ function test(workerNum){
 
 	console.log("serial reflect time: ", serialReflect())
 
-	parallelReflect(workerNum)
+	// parallelReflect(workerNum)
 
 	console.log("serial grayscale time: ", serialGrayScale())
 
-	parallelGrayScale(workerNum)
+	// parallelGrayScale(workerNum)
 
 	console.log("serial invert time: ", serialInvert())
 
-	parallelInvert(workerNum)
+	// parallelInvert(workerNum)
 
 	console.log("serial convolution time: ", serialImageConvolution([[1, 1, 1], [1, 1, 1], [1, 1, 1]]))
 
-	parallelImageConvolution([[1, 1, 1], [1, 1, 1], [1, 1, 1]], workerNum)
+	// parallelImageConvolution([[1, 1, 1], [1, 1, 1], [1, 1, 1]], workerNum)
 
 
 
