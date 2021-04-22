@@ -74,7 +74,7 @@ function commitChanges(finalImgData, newImagePixelMatrix, width, height) {
 	ctx.putImageData(finalImgData, 0, 0, 0, 0, width, height)
 }
 
-function test(workerNum){
+function serialTest(){
 
 
 	console.log("serial reflect time: ", serialReflect())

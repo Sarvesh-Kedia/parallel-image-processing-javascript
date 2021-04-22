@@ -3,6 +3,7 @@ serialReflect = function(){
 	// Get an ImageData object representing the underlying pixel data for the area of the canvas
 	imgData = ctx.getImageData(0, 0, srcImage.width, srcImage.height)
 
+	console.log(imgData)
 
 	// .data gets the array of integers with 0-255 range, .slice returns a copy of the array 
 	imagePixelMatrix = imgData.data.slice()

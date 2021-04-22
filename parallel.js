@@ -3,8 +3,9 @@ document.writeln("<script type='text/javascript' src='./Workers/grayScaleWorker.
 document.writeln("<script type='text/javascript' src='./Workers/invertWorker.js'></script>");
 document.writeln("<script type='text/javascript' src='./Workers/convolutionWorker.js'></script>");
 
-
-parallelReflect = function(workerNum=4){
+const num = 4
+console.log(num)
+parallelReflect = function(workerNum=num){
 	
 	// Get an ImageData object representing the underlying pixel data for the area of the canvas
 	imgData = ctx.getImageData(0, 0, srcImage.width, srcImage.height)
@@ -33,6 +34,7 @@ parallelReflect = function(workerNum=4){
     if (window.Worker) {
 
         for(var i=0; i<workerNum; ++i){
+            // console.log('new worker', i)
             workers = new Worker("./Workers/reflectWorker.js");
             ++running;
             workers.onmessage = workerDone;
@@ -41,6 +43,8 @@ parallelReflect = function(workerNum=4){
 
         function workerDone(e) {
             --running;
+
+            // console.log('worker done', e.data.i)
             
             computeMatrix = e.data.computeMatrix
             height = e.data.height
@@ -74,7 +78,7 @@ parallelReflect = function(workerNum=4){
 }
 
 
-parallelGrayScale = function(workerNum=4){
+parallelGrayScale = function(workerNum=num){
 	
 	// Get an ImageData object representing the underlying pixel data for the area of the canvas
 	imgData = ctx.getImageData(0, 0, srcImage.width, srcImage.height)
@@ -141,7 +145,7 @@ parallelGrayScale = function(workerNum=4){
 }
 
 
-parallelInvert = function(workerNum=4){
+parallelInvert = function(workerNum=num){
 	
 	// Get an ImageData object representing the underlying pixel data for the area of the canvas
 	imgData = ctx.getImageData(0, 0, srcImage.width, srcImage.height)
@@ -208,7 +212,7 @@ parallelInvert = function(workerNum=4){
 }
 
 // kernel dimension should be > splitSize
-parallelImageConvolution = function(kern, workerNum=4){
+parallelImageConvolution = function(kern, workerNum=num){
 	
 	// Get an ImageData object representing the underlying pixel data for the area of the canvas
 	imgData = ctx.getImageData(0, 0, srcImage.width, srcImage.height)
